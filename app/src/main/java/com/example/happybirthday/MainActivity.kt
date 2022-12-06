@@ -1,10 +1,12 @@
 package com.example.happybirthday
 
+import android.graphics.Color
 import android.graphics.fonts.FontStyle
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -35,7 +37,13 @@ class MainActivity : ComponentActivity() {
                 ) {
 //                    GreetingWithImage()
 //                    ComposeArticle()
-                    TaskManager()
+//                    TaskManager()
+                    CardInfo(
+                        title = "Test",
+                        subTitle = "SubTitle",
+                        color = androidx.compose.ui.graphics.Color.Red,
+                        modifier = Modifier.padding(16.dp)
+                    )
                 }
             }
         }
@@ -103,7 +111,9 @@ fun ComposeArticle() {
 @Composable
 fun TaskManager() {
     Column(
-        modifier = Modifier.fillMaxWidth().fillMaxHeight(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -122,6 +132,22 @@ fun TaskManager() {
     }
 }
 
+@Composable
+fun CardInfo(title: String, subTitle: String, color: androidx.compose.ui.graphics.Color, modifier: Modifier) {
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .fillMaxHeight()
+            .background(color = color),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+
+    ) {
+        Text(text = title)
+        Text(text = subTitle)
+    }
+}
+
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun BirthdayCardPreview() {
@@ -129,6 +155,12 @@ fun BirthdayCardPreview() {
 //        Greeting("Android")
 //        GreetingWithImage()
 //        ComposeArticle()
-        TaskManager()
+//        TaskManager()
+        CardInfo(
+            title = "Test",
+            subTitle = "SubTitle",
+            color = androidx.compose.ui.graphics.Color.Red,
+            modifier = Modifier.padding(16.dp)
+        )
     }
 }
