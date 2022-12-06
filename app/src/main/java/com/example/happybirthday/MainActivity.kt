@@ -1,5 +1,6 @@
 package com.example.happybirthday
 
+import android.graphics.fonts.FontStyle
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -17,6 +18,8 @@ import androidx.compose.ui.unit.sp
 import com.example.happybirthday.ui.theme.HappyBirthdayTheme
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontStyle.Companion.Italic
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
@@ -31,7 +34,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
 //                    GreetingWithImage()
-                    ComposeArticle()
+//                    ComposeArticle()
+                    TaskManager()
                 }
             }
         }
@@ -96,12 +100,35 @@ fun ComposeArticle() {
     }
 }
 
+@Composable
+fun TaskManager() {
+    Column(
+        modifier = Modifier.fillMaxWidth().fillMaxHeight(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        val image = painterResource(id = R.drawable.ic_task_completed)
+        Image(
+            painter = image,
+            contentDescription = null,
+            modifier = Modifier.wrapContentHeight(align = Alignment.CenterVertically)
+        )
+        Text(text = "All tasks completed",
+            fontWeight = FontWeight.Bold,
+            fontSize = 16.sp,
+            modifier = Modifier.padding(bottom = 8.dp, top = 24.dp)
+        )
+        Text(text = "Nice work!", fontSize = 16.sp)
+    }
+}
+
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun BirthdayCardPreview() {
     HappyBirthdayTheme {
 //        Greeting("Android")
 //        GreetingWithImage()
-        ComposeArticle()
+//        ComposeArticle()
+        TaskManager()
     }
 }
